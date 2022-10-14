@@ -13,12 +13,11 @@ import javax.persistence.InheritanceType;
 import java.time.LocalDateTime;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@DiscriminatorColumn(name = "discriminatorColumn")
-@Inheritance(strategy = InheritanceType.JOINED)
 @Builder
+
+@Entity
 public class ApplicantStatus extends AbstractPersistable<Long> {
     public LocalDateTime RatedDate;
     public boolean Passed;

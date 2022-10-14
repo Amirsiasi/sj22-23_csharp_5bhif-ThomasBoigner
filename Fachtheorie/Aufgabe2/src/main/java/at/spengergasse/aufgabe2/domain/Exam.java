@@ -1,4 +1,4 @@
-package at.spengergasse.aufgabe1.domain;
+package at.spengergasse.aufgabe2.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,15 +18,11 @@ import java.time.LocalDateTime;
 @Builder
 
 @Entity
-public class Upload extends AbstractPersistable<Long> {
-    private LocalDateTime zeitstempel;
-    private String url;
-
-    @ManyToOne
-    @JoinColumn(name = "applicant_id")
-    private Applicant applicant;
-
-    @ManyToOne
-    @JoinColumn(name = "task_id")
-    private Task task;
+public class Exam extends AbstractPersistable<Long> {
+    private LocalDateTime date;
+    private int examResult;
+    private int newGradeValue;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "grade_id")
+    private Grade grade;
 }

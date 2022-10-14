@@ -11,11 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
+@Entity
 public class Task extends AbstractPersistable<Long> {
     private String text;
     private LocalDate dateFrom;

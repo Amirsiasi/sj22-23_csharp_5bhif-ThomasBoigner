@@ -11,10 +11,11 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
+
+@Entity
 public class Department extends AbstractPersistable<Long> {
     @NotNull
     @Column(unique = true)

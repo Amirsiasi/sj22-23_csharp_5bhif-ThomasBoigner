@@ -10,11 +10,12 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
+@Entity
 public class Applicant extends AbstractPersistable<Long> {
 
     private String vorname;
