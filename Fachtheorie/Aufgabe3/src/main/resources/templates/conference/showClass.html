@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${class.getName()}">Klasse</title>
+</head>
+<style>
+    table{
+        border: 1px solid;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th{
+        border: 1px solid;
+    }
+</style>
+<body>
+    <H1 th:text="'SchülerInnen der Klasse ' + ${class.getName()}">SchülerInnen der Klasse 5BHIF</H1>
+    <table>
+        <thead>
+            <tr>
+                <th>Zuname</th>
+                <th>Vorname</th>
+                <th>Beschluss?</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:if="${students.isEmpty()}">
+                <td colspan="5">No data available</td>
+            </tr>
+            <tr th:each="student, studentStatus: ${students}" th:object="${student}">
+                <td th:text="*{lastname}">Boigner</td>
+                <td th:text="*{firstname}">Thomas</td>
+                <div th:if="${beschluss.get(studentStatus.index)}">
+                    <td th:if="*{conferenceDecision}">Ja</td>
+                    <td th:if="!*{conferenceDecision}">Nein</td>
+                </div>
+                <td th:if="!${beschluss.get(studentStatus.index)}"></td>
+                <td>
+                    <a th:if="${beschluss.get(studentStatus.index)}" href="#" th:href="@{/Konferenz/Beschluss/{id}(id=*{token})}">Beschluss eintragen</a>
+                    <a th:if="${pruefungAnmelden.get(studentStatus.index)}" href="#" th:href="@{/Pruefung/Anmeldung/{id}(id=*{token})}">Prüfung anmelden</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+</html>

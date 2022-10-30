@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Für Prüfung anmelden</title>
+</head>
+<body>
+    <b th:text="${student.getFirstname()} + ' ' + ${student.getLastname()}">Thomas Boigner</b> ist zu folgenden Prüfungen angemeldet:
+    <div th:each="exam: ${exams}">
+        <div th:text="${exam.getGrade().getLesson().getSubject().getShortname()} + ' am ' + ${exam.getDate()}"></div>
+    </div>
+    <div>
+        <b>Neue Prüfung anmelden</b>
+    </div>
+    <form method="post">
+        <div>
+            Datum:
+            <input type="datetime-local" th:field="${newExam.date}">
+            Gegenstand:
+            <select th:field="${newExam.subject}">
+                <option th:each="subject:${subjects}" th:text="${subject.shortname}" th:value="${subject.shortname}"></option>
+            </select>
+        </div>
+        <button type="submit">Speichern</button>
+        <button><a href="#" th:href="@{/Konferenz/Klasse/{id}(id=${student.get_class().getToken()})}">Abbruch</a></button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ändere Beschluss</title>
+</head>
+<body>
+    <b th:text="${selectedStudent.firstname} + ' ' + ${selectedStudent.lastname}">Thomas Boigner</b> hat in den folgenden Gegenständen ein Nicht genügend:
+    <div th:each="subject: ${subjects}" th:object="${subject}">
+        <span th:text="*{shortname}">AM</span> - <span th:text="*{longname}"></span>
+    </div>
+    <div th:text="'Soll ' + ${selectedStudent.lastname} + ' mit diesem Nicht genügend in den höheren Jahrgang aufsteigen?'">Soll Boigner mit diesem Nicht genügend in den höheren Jahrgang aufsteigen?</div>
+    <form method="post">
+        <input type="radio" name="JaNein" th:field="${updateBeschluss.conferenceDecision}" value="true">Ja
+        <input type="radio" name="JaNein" th:field="${updateBeschluss.conferenceDecision}" value="false">Nein
+        <button type="submit">Bestätigen</button>
+    </form>
+</body>
+</html>
