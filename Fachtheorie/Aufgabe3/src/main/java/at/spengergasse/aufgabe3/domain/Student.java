@@ -21,13 +21,13 @@ public class Student extends AbstractPersistable<Long> {
     private String token;
     private LocalDateTime creationTS;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "class_id")
     private Class _class;
 
     private boolean conferenceDecision;
 
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, mappedBy = "student")
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "student")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private List<Grade> grades = new ArrayList<Grade>(5);

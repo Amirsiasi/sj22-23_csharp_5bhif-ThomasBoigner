@@ -19,11 +19,11 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Grade extends AbstractPersistable<Long> {
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "student_id")
     private Student student;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "lesson_id")
     private Lesson lesson;
 

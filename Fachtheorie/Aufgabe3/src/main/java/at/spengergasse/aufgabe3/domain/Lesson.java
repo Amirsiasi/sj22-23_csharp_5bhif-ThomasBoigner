@@ -19,15 +19,15 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Lesson extends AbstractPersistable<Long> {
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "class_id")
     private Class _class;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 

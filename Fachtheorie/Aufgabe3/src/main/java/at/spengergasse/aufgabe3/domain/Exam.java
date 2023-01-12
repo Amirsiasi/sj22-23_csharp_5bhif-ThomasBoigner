@@ -22,7 +22,7 @@ public class Exam extends AbstractPersistable<Long> {
     private LocalDateTime date;
     private int examResult;
     private int newGradeValue;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "grade_id")
     private Grade grade;
 
